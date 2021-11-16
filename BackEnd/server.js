@@ -64,6 +64,18 @@ app.get('/api/movies/:id',(req, res)=>{
     })
 })
 
+app.put('/api/movies/:id',(req, res)=>{
+    console.log('update');
+    console.log(req.body);
+    console.log("Updating: " + req.params.id);
+
+    movieModel.findByIdAndUpdate(req.params.id, req.body, {new:true},
+        (err,data)=>{
+            res.send(data);
+        })
+
+})
+
 app.get('/api/movies', (req, res) => {
     movieModel.find((err, data)=>{
         res.json(data);

@@ -15,6 +15,7 @@ import {
 } from "react-router-dom";
 import Read from './components/read';
 import Create from './components/create';
+import Edit from './components/edit';
 
 class App extends Component {
   render() {
@@ -35,6 +36,7 @@ class App extends Component {
           <Route path="/" exact><Content /></Route>
           <Route path="/create"><Create></Create></Route>
           <Route path="/read"><Read></Read></Route>
+          <Route path={"/edit/:id"} component={Edit}></Route>
         </Switch>
       </div>
       </Router>

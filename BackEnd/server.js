@@ -21,7 +21,7 @@ app.use(bodyParser.json())
 
 const mongoose = require('mongoose');
 
-const strConnection = 'mongodb+srv://admin:admin@cluster0.8taek.mongodb.net/myFirstDatabase?retryWrites=true&w=majority'
+const strConnection = 'mongodb+srv:mongodb+srv://admin:admin@cluster0.eo9g2.mongodb.net/myFirstDatabase?retryWrites=true&w=majority'
 
 main().catch(err => console.log(err));
 
@@ -63,7 +63,16 @@ app.get('/api/movies/:id',(req, res)=>{
         res.json(data);
     })
 })
+app.delete("/api/movies/:id",(req,res)=>{
+    console.log("Delete"+ req.params.id);
 
+    movieModel.deleteOne({_id: req.params.id},
+        (error,data)=>{
+            if(error)
+               res.send(error);
+            res.send(data);
+        })
+})
 app.put('/api/movies/:id',(req, res)=>{
     console.log('update');
     console.log(req.body);
